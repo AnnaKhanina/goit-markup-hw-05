@@ -291,20 +291,37 @@ button {
   flex-wrap: wrap;
 }
 
-.employment-item {
+.employment-item { 
   margin-top: 0;
   margin-right: 30px;
-  position: relative;
 }
 
 .employment-item:nth-child(3n) {
   margin-right: 0;
 }
 
-.employment-overlay::after {
-  content: '';
+.employment-overlay {
   position: relative;
-}
+  background-color: rgba(47, 48, 58, 0.8);
+  transform: translateY(-100%);
+  width: 370px;
+  height: 70px;
+  }
+
+.employment-overlay-text {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  padding: 27px 82px;   
+  color: var(--accent-filters-color);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  }
 
 
 /*---------team---------*/
@@ -701,21 +718,24 @@ button {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);;
 }
 
 .modal {
-  position: absolute;
-  
+  position: absolute;  
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  transform: scale(1);
   width: 528px;
   min-height: 581px;
   background-color: var(--accent-filters-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-}
 
+
+}
 
 .modal-close-icon {
   width: 11px;
@@ -734,8 +754,11 @@ button {
   border-radius: 50%;
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+}
+.backdrop.is-hidden .modal {
+  transform : scale(0.9)
 }
